@@ -17,7 +17,7 @@ const userlogin = async (req , res) => {
     return res.send("invalid credentials")
    }
    const token = user.generateToken();
-   res.status(200).json({msg : "login success" , token : token});
+   res.status(200).json({msg : "login successfully done" , token : token});
     } catch (error) {
         res.status(404).send(`Internal server side error ${error}`)  
     }
