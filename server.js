@@ -21,7 +21,7 @@ dbconnet()
 
 
 
-
+app.get("/" , (req, res)=>{res.send("welcome to the world of Backend")})
 app.use("/api/user" , userRouter)
 app.use("/api/auth" , AuthRouter)
 app.use("/api/doctor" ,DoctorRouter)
