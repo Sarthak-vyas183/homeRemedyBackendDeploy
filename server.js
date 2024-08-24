@@ -11,7 +11,7 @@ const DoctorRouter = require("./Router/Doctor.router");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 var corsOptions = {
-  origin: 'https://frontend-deploy-9wh1.onrender.com', 
+  origin: ['https://frontend-deploy-9wh1.onrender.com', 'http://localhost:5173'],
   methods: "GET, POST, PUT, DELETE",
   credentials: true
 };

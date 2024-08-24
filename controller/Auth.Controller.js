@@ -112,7 +112,7 @@ const bookmarkornot = async (req , res) => {
    if(!user) return res.status(404).json({msg : "User not found"})
 
    const remedyIdx = user.bookMarks.indexOf(req.body.RemedyId);
-   console.log(remedyIdx)
+   
     if(remedyIdx != -1) {
       return res.status(403).json({msg :"remedy Exist !"});
     }

@@ -75,7 +75,7 @@ const CreateRemedies  = async(req , res) => {
 
 const showMyRemedy = async (req, res) => {
     try {
-      console.log(req.userId);
+     
       const data = await RemedyModel.find({ userId: req.userId });
       res.status(200).json({msg : "YOUR Remedies", data});
     } catch (error) {
