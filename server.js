@@ -11,10 +11,10 @@ const DoctorRouter = require("./Router/Doctor.router");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 var corsOptions = {
-    origin: 'https://frontend-deploy-9wh1.onrender.com/',
-    methods : "GET, POST, PUT, DELETE ",
-    credential : true
-  }
+  origin: 'https://frontend-deploy-9wh1.onrender.com', 
+  methods: "GET, POST, PUT, DELETE",
+  credentials: true
+};
   app.use(cors(corsOptions)) 
 dbconnet()
 
