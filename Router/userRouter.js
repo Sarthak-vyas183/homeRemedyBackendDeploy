@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { userlogin , usersignup , CreateRemedies  , showMyRemedy , mybookmarks , mybookmarksdetail , verifyemail , connectToDr} = require("../controller/user.controller");
+const { userlogin , usersignup , CreateRemedies  , showMyRemedy , mybookmarks , mybookmarksdetail , verifyemail , connectToDr , updateProfile} = require("../controller/user.controller");
 const signupSchema = require("../validation/signupValidation")
 const validate = require("../middleware/validate.middleware")
 const TokenVerify = require("../middleware/TokenVerify.Middelware")
@@ -15,4 +15,5 @@ router.route("/mybookmarks").post(TokenVerify , mybookmarks);
 router.route("/mybookmarksdetail").post(mybookmarksdetail);
 router.route("/verifyemail").post(verifyemail);
 router.route("/connect_to_dr").post(TokenVerify , connectToDr);
+router.route("/updateprofile").post(TokenVerify , upload.single("profileImage") , updateProfile);
 module.exports = router;

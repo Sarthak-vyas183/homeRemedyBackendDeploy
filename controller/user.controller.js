@@ -4,6 +4,8 @@ var jwt = require('jsonwebtoken');
 const RemedyModel = require("../models/RemedyModel") 
 const reqModel = require("../models/UserRequest");
 
+
+
 const userlogin = async (req , res) => {
     try {
         const {email , password} = req.body;
@@ -139,4 +141,32 @@ const connectToDr = async (req, res) => {
   }
 };
 
-module.exports = {userlogin , usersignup , CreateRemedies ,showMyRemedy , mybookmarks , mybookmarksdetail , verifyemail , connectToDr }
+
+const updateProfile = async(req,res)=> {
+  try {
+    try {
+      const userId = req.userId;
+      const user = await userModel.findById(userId);
+      
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+  
+      // If a profile image is uploaded, process it
+      if (req.file) {
+        user.profileimg = req.file.buffer; // Save the image buffer (you can also save the file name/path)
+      }
+  
+      // Save user updates
+      await user.save();
+      
+      res.status(200).json({ msg: "Profile updated successfully" });
+    } catch (error) {
+      res.status(500).send(`Internal server error: ${error.message}`);
+    } 
+  } catch (error) {
+     res.send(`Internal Server error : ${error}`)
+  }
+}
+
+module.exports = {userlogin , usersignup , CreateRemedies ,showMyRemedy , mybookmarks , mybookmarksdetail , verifyemail , connectToDr , updateProfile }
