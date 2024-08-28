@@ -11,7 +11,7 @@ const DoctorRouter = require("./Router/Doctor.router");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 var corsOptions = {
-  origin: ['https://homeremedies.onrender.com', 'http://localhost:5173'],
+  origin: ['https://homeremedies.onrender.com', 'http://localhost:5173' , "https://home-made-remedies.netlify.app"],
   methods: "GET, POST, PUT, DELETE",
   credentials: true
 };
