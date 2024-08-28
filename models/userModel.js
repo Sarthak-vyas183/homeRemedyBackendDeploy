@@ -54,7 +54,11 @@ const userSchema = new mongoose.Schema({
   },
   bookMarks: {
     type: [String],
-  }
+  } , 
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
 });
 
 userSchema.pre("save" , async function(next) {

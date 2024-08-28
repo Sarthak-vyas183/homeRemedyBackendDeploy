@@ -49,7 +49,11 @@ const RemedySchema = new mongoose.Schema({
     image: {
         type: Buffer,
         required: true
-    }
+    } ,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 module.exports = mongoose.model("Remedy", RemedySchema);
