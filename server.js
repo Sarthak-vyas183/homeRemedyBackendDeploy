@@ -6,10 +6,16 @@ const dbconnet = require("./utiles/DB");
 const userRouter = require("./Router/userRouter");
 const AuthRouter = require("./Router/AuthRouter")
 const DoctorRouter = require("./Router/Doctor.router");
+app.use(express.static(path.join(__dirname, 'build')));
+
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 var corsOptions = {
   origin: ['https://homeremedies.onrender.com', 'http://localhost:5173' , "https://home-made-remedies.netlify.app"],
   methods: "GET, POST, PUT, DELETE",
