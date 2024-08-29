@@ -2,6 +2,7 @@ const RemedyModel = require("../models/RemedyModel");
 const UserModel = require("../models/userModel");
 const ReviewModel = require("../models/CommentModel");
 const userModel = require("../models/userModel");
+const dr_requestModel = require("../models/Dr.req.model");
 const bcrypt = require("bcrypt");
 
 const GetAllRemedies = async (req, res) => {
@@ -152,7 +153,26 @@ const DeleteAccount = async (req, res) => {
   } catch (error) {
      res.send(`Internal server error ${error}`);
   }
+}; 
+
+const SavedrReq = async (req, res) => {
+  try {
+    const createdrequest = await dr_requestModel.create({
+      userId: req.userId,
+      RMP_No: req.body.RMP_No,
+      RMP_img: req.file.buffer,
+    });
+
+    if (!createdrequest) {
+      return res.status(400).json({ error: "Something went wrong" });
+    }
+
+    res.status(200).json({ msg: "Request sent successfully" });
+  } catch (error) {
+    res.status(500).json({ error: `Internal server error: ${error.message}` });
+  }
 };
+
 
 module.exports = {
   GetAllRemedies,
@@ -164,4 +184,5 @@ module.exports = {
   bookmarkRemedy,
   bookmarkornot,
   DeleteAccount,
-};
+  SavedrReq
+}; 

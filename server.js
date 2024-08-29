@@ -6,6 +6,7 @@ const dbconnet = require("./utiles/DB");
 const userRouter = require("./Router/userRouter");
 const AuthRouter = require("./Router/AuthRouter")
 const DoctorRouter = require("./Router/Doctor.router");
+const AdminRouter = require("./models/Dr.req.model");
 
 
 app.use(express.json());
@@ -25,6 +26,7 @@ app.get("/" , (req, res)=>{res.send("welcome to the world of Backend")})
 app.use("/api/user" , userRouter)
 app.use("/api/auth" , AuthRouter)
 app.use("/api/doctor" ,DoctorRouter)
+app.use("/api/admin" , AdminRouter)
 
 
 
