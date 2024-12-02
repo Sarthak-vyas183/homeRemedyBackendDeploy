@@ -28,7 +28,7 @@ const usersignup = async (req, res) => {
     const { fullname, email, password, ph_no } = req.body;
     const existUser = await userModel.findOne({ email: email });
     if (existUser) {
-      return res.send("Email already Register");
+      return res.status(409).json({msg : "Email Already register"});
     }
     const user = await userModel.create({ fullname, email, password, ph_no });
     const token = user.generateToken();
