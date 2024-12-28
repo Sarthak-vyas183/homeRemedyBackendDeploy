@@ -11,7 +11,7 @@ const AdminRouter = require("./Router/AdminRouter");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 var corsOptions = {
-  origin: ["http://localhost:5173", "https://home-made-remedies.netlify.app"],
+  origin: ["http://localhost:5173", "https://home-made-remedies.netlify.app", "https://frontend-deploy-f2mm.onrender.com/"],
   methods: "GET, POST, PUT, DELETE",
   credentials: true,
 };
